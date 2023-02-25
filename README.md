@@ -124,6 +124,24 @@ const wt = new WebTour({
 });
 ```
 
+### Labels
+
+```javascript
+wt.labels.next = 'Next &#8594;';
+wt.labels.prev = '&#8592; Back';
+wt.labels.done = 'Done';
+wt.labels.close = 'Close';
+```
+or
+```javascript
+wt.labels = {
+    next: 'Next &#8594;',
+    prev: '&#8592; Back',
+    done: 'Done',
+    close: 'Close',
+}
+```
+
 ### Functions
 
 ```javascript

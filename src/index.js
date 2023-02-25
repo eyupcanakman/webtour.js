@@ -23,6 +23,13 @@ export default class WebTour {
             ...options,
         }
 
+        this.labels = {
+            next: 'Next &#8594;',
+            prev: '&#8592; Back',
+            done: 'Done',
+            close: 'Close',
+        }
+
         this.steps = [];
         this.stepIndex = 0;
         this.isRunning = false;
@@ -271,8 +278,8 @@ export default class WebTour {
             btnNext.classList.add('wt-btns', 'wt-btn-next');
             btnBack.classList.add('wt-btns', 'wt-btn-back');
 
-            btnNext.innerHTML = (step.btnNext && step.btnNext.text ? step.btnNext.text : (this.stepIndex == this.steps.length - 1 ? 'Done' : 'Next &#8594;'));
-            btnBack.innerHTML = (step.btnBack && step.btnBack.text ? step.btnBack.text : (this.stepIndex == 0 ? 'Close' : '	&#8592; Back'));
+            btnNext.innerHTML = (step.btnNext && step.btnNext.text ? step.btnNext.text : (this.stepIndex == this.steps.length - 1 ? this.labels.done : this.labels.next));
+            btnBack.innerHTML = (step.btnBack && step.btnBack.text ? step.btnBack.text : (this.stepIndex == 0 ? this.labels.close : this.labels.prev));
 
             //add styles
             btnNext.style.backgroundColor = (step.btnNext && step.btnNext.backgroundColor ? step.btnNext.backgroundColor : '#7cd1f9');
