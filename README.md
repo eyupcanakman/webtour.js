@@ -121,6 +121,7 @@ const wt = new WebTour({
     width: '300px',         //specify popover's width
     zIndex: 10050,          //specify z-index 
     removeArrow: false,     //show/hide popover arrow
+    autoScroll: true,       //scroll into element
 });
 ```
 

@@ -18,6 +18,7 @@ export default class WebTour {
             width: '300px',
             zIndex: 10050,
             removeArrow: false,
+            autoScroll: true,
             onNext: () => null,
             onPrevious: () => null,
             ...options,
@@ -315,7 +316,9 @@ export default class WebTour {
         */
         else {                
             popover.classList.add('wt-slides');
-            popover.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+            if (this.options.autoScroll) {
+                popover.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+            }
 
             if (this.options.highlight){
                 var overlay = document.createElement('div');
@@ -549,11 +552,13 @@ export default class WebTour {
             popover.style.left = (el_left - (popover.offsetWidth + this.options.offset)) + 'px';
         }
 
-        //if position is fixed scroll to top
-        if (strategy === 'fixed'){
-            this.window.scrollTo(0, 0);
-        }else{
-            popover.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+        if (this.options.autoScroll) {
+            //if position is fixed scroll to top
+            if (strategy === 'fixed'){
+                this.window.scrollTo(0, 0);
+            }else{
+                popover.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+            }
         }            
     }
 
